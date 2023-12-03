@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Davko's 99 Shop</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Arial", sans-serif;
+            background: linear-gradient(to right, #4CAF50, #FF80AB, #FFD700);
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        #shop-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .item-box {
+            border-radius: 15px;
+            padding: 15px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .item-box:hover {
+            transform: scale(1.05);
+        }
+
+        .item-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-image: url('karatebundle.png'); /* Replace with the correct path */
+            background-size: cover;
+            margin: auto;
+        }
+
+        .item-details {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        #bundles {
+            margin-top: -350px;
+            margin-left: 1750px;
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to Davko's 99 Shop</h1>
+    </header>
+
+    <div id="shop-container">
+        <div class="item-box" onclick="sendToWebhook('Karate Bundle', 1, 6500)">
+            <div class="item-icon"></div>
+            <div class="item-details">
+                <p>Karate Bundle</p>
+                <p>Items: 100x Ninja Maskot, 1000x Ninja Turtle + A free Ninja Cat!</p>
+                <p>Cost: 6500 Gems</p>
+            </div>
+        </div>
+    </div>
+
+    <a href="index.html">
+        <p id="bundles">Home</p>
+    </a>
+
+    <script>
+        async function sendToWebhook(item, quantity, cost) {
+            const username = prompt("Please enter your email:");
+            if (username) {
+                const webhookURL = "https://discord.com/api/webhooks/1180953601162612926/1is0dDkyNOmy3hvfDNDhLN9P6fGwgW33PEu8oPe1w22kUjDAD33qPpxSlURyHZ3aVGvz";
+
+                try {
+                    const response = await fetch(webhookURL, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            content: `Email: ${username}\nItem: ${item}\nQuantity: ${quantity}\nCost: $${cost}`,
+                        }),
+                    });
+
+                    if (!response.ok) {
+                        console.error('Network response was not ok');
+                    }
+                } catch (error) {
+                    console.error('Error sending webhook:', error);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
