@@ -39,11 +39,19 @@
             transform: scale(1.05);
         }
 
-        .item-icon {
+        .in-icon {
             width: 50px;
             height: 50px;
             border-radius: 50%;
             background-color: #FFD700;
+            margin: auto;
+        }
+		
+        .out-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ff0000;
             margin: auto;
         }
 
@@ -52,11 +60,27 @@
             text-align: center;
         }
 
-        #bundles {
-            margin-top: -312px;
-            margin-left: 1750px;
-            font-size: 25px;
+        a {
+            text-decoration: none;
+            color: inherit;
         }
+
+        #info {
+            font-size: 25px;
+            position: fixed;
+            top: 20px;
+            right: 160px;
+            color: black;
+        }
+		
+        #bundles {
+            font-size: 25px;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            color: black;
+        }
+		
     </style>
 </head>
 
@@ -67,7 +91,7 @@
 
     <div id="shop-container">
         <div class="item-box" onclick="sendToWebhook('Item1', 1, 10)">
-            <div class="item-icon"></div>
+            <div class="in-icon"></div>
             <div class="item-details">
                 <p>Ninja Cats</p>
                 <p>Quantity: 1000</p>
@@ -76,17 +100,31 @@
         </div>
 
         <div class="item-box" onclick="sendToWebhook('Item1', 1, 10)">
-            <div class="item-icon"></div>
+            <div class="in-icon"></div>
             <div class="item-details">
                 <p>Ninja Maskots</p>
                 <p>Quantity: 100</p>
-                <p>Cost: 1500 Gems</p>
+                <p>Cost: 1000 Gems</p>
             </div>
         </div>
+		
+        <div class="item-box" onclick="sendToWebhook('Item1', 1, 10)">
+            <div class="in-icon"></div>
+            <div class="item-details">
+                <p>Ninja Cat</p>
+                <p>Quantity: 1</p>
+                <p>Cost: 2000 Gems</p>
+            </div>
+        </div>
+		
     </div>
 
     <a href="bundles.html">
         <p id="bundles">Bundles</p>
+    </a>
+	
+    <a href="info.html">
+        <p id="info">Info</p>
     </a>
 
     <script>

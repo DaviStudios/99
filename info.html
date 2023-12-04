@@ -20,7 +20,7 @@
 
         #shop-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(3, 1fr); /* Set 3 equal-width columns */
             gap: 20px;
             padding: 20px;
         }
@@ -32,18 +32,26 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             cursor: pointer;
             transition: transform 0.3s ease-in-out;
+            display: inline-block;
         }
 
         .item-box:hover {
             transform: scale(1.05);
         }
 
-        .item-icon {
+        .in-icon {
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background-image: url('karatebundle.png'); /* Replace with the correct path */
-            background-size: cover;
+            background-color: #FFD700;
+            margin: auto;
+        }
+		
+        .out-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ff0000;
             margin: auto;
         }
 
@@ -52,11 +60,27 @@
             text-align: center;
         }
 
-        #bundles {
-            margin-top: -350px;
-            margin-left: 1750px;
-            font-size: 25px;
+        a {
+            text-decoration: none;
+            color: inherit;
         }
+
+        #info {
+            font-size: 25px;
+            position: fixed;
+            top: 20px;
+            right: 160px;
+            color: black;
+        }
+		
+        #bundles {
+            font-size: 25px;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            color: black;
+        }
+		
     </style>
 </head>
 
@@ -66,18 +90,28 @@
     </header>
 
     <div id="shop-container">
-        <div class="item-box" onclick="sendToWebhook('Karate Bundle', 1, 6500)">
-            <div class="item-icon"></div>
+        <div class="item-box" onclick="sendToWebhook('Item1', 1, 10)">
+            <div class="in-icon"></div>
             <div class="item-details">
-                <p>Karate Bundle</p>
-                <p>Items: 100x Ninja Maskot, 1000x Ninja Turtle + 1x Ninja Cat</p>
-                <p>Cost: 6500 Gems</p>
+                <p>Yellow icon means out of stock</p>
             </div>
         </div>
+
+        <div class="item-box" onclick="sendToWebhook('Item1', 1, 10)">
+            <div class="out-icon"></div>
+            <div class="item-details">
+                <p>Red icon means out of stock</p>
+            </div>
+        </div>
+		
     </div>
 
-    <a href="index.html">
-        <p id="bundles">Home</p>
+    <a href="bundles.html">
+        <p id="bundles">Bundles</p>
+    </a>
+	
+    <a href="info.html">
+        <p id="info">Info</p>
     </a>
 
     <script>
